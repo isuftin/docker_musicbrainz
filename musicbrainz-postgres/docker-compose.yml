@@ -1,12 +1,15 @@
-db:
-  image: musicbrainz-postgres:0.0.1
-  ports:
-    - "5432:5432"
-  volumes:
-    - ../dump:/dump
+musicbrainzDb:
+  image: musicbrainz-postgres
   volumes_from:
-    - postgres-data
+    - musicbrainzData
   environment:
     - POSTGRES_USER=musicbrainz
     - POSTGRES_PASSWORD=musicbrainz
   hostname: db
+
+musicbrainzData:
+  image: alpine
+  volumes:
+    - /var/lib/postgresql/data
+    - ../dump:/dump
+  entrypoint: /bin/true
