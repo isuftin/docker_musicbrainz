@@ -17,11 +17,12 @@ MAINTAINER Rick White <rickatnight11@gmail.com>
 
 VOLUME ["/dump"]
 
+RUN apt-get update && apt-get install -y curl
+
 RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
 
 # Install system dependencies
-RUN apt-get update && \
-apt-get install -y adduser sudo git unzip unrar-free curl \
+RUN apt-get install -y adduser git unzip unrar-free \
 bash-completion wget vim memcached redis-server \
 build-essential nodejs npm nodejs-legacy libwww-perl \
 libxml2-dev libpq-dev libexpat1-dev libdb-dev \
