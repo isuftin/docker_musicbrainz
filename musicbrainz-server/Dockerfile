@@ -15,6 +15,8 @@ MAINTAINER Rick White <rickatnight11@gmail.com>
 # Configure apt-get HTTP proxy
 #RUN echo 'Acquire::http::Proxy "http://hostname:port";' >> /etc/apt/apt.conf
 
+VOLUME ["/dump"]
+
 # Install system dependencies
 RUN apt-get update && \
 apt-get install -y adduser sudo git unzip unrar-free curl \
