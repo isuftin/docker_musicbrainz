@@ -31,7 +31,7 @@ rm -rf /var/lib/{apt,dpkg,cache,log}/
 RUN mkdir -p /opt/musicbrainz
 WORKDIR /opt/musicbrainz
 RUN git clone --recursive git://github.com/metabrainz/musicbrainz-server.git .
-RUN git checkout tags/v-2015-07-13
+RUN git checkout tags/v-2015-12-14
 
 # Install perl dependencies
 RUN echo 'eval $( perl -Mlocal::lib )' >> ~/.bashrc

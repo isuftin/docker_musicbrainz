@@ -33,6 +33,8 @@ git clone --recursive https://github.com/metabrainz/musicbrainz-server.git /tmp/
 
 echo  "installing required perl libs"  
 cd /tmp/server
+git checkout tags/v-2015-12-14
+
 cpanm --notest --no-interactive --mirror http://cpan.cpantesters.org/ .
 
 echo "Compiling db dependencies"
