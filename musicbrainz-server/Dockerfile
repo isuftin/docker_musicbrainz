@@ -17,9 +17,9 @@ MAINTAINER Rick White <rickatnight11@gmail.com>
 
 VOLUME ["/dump"]
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl sudo
 
-RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo  -E bash -
 
 # Install system dependencies
 RUN apt-get install -y adduser git unzip unrar-free \
