@@ -32,8 +32,7 @@ apt-get clean autoclean && \
 apt-get autoremove -y && \
 rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-# Install nodejs dependencies
-RUN npm install
+
 
 # Install MusicBrainz
 RUN mkdir -p /opt/musicbrainz
@@ -46,6 +45,9 @@ RUN echo 'eval $( perl -Mlocal::lib )' >> ~/.bashrc
 #RUN http_proxy=http://hostname:port cpanm --installdeps --notest .
 RUN cpanm --installdeps --notest .
 RUN cpanm SARTAK/MooseX-Role-Parameterized-1.02.tar.gz
+
+# Install nodejs dependencies
+RUN npm install
 
 # Build JavaScript/CSS
 RUN ./node_modules/.bin/gulp
