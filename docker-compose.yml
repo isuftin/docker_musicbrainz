@@ -21,5 +21,7 @@ musicbrainz_data:
   volumes:
     - /var/lib/postgresql/data
     - ./dump:/dump
-  entrypoint: echo /binn/true
+  entrypoint: echo /bin/true
   container_name: musicbrainz_data
+  labels:
+    - "volume.container=true"
