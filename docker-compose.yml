@@ -6,6 +6,7 @@ musicbrainz_db:
     - POSTGRES_USER=musicbrainz
     - POSTGRES_PASSWORD=musicbrainz
   hostname: db
+  container_name: musicbrainz_db
   
 musicbrainz_server:
     build: ./musicbrainz-server
@@ -13,10 +14,12 @@ musicbrainz_server:
       - musicbrainz_data
     links:
       - "musicbrainz_db:db"
+    container_name: musicbrainz_server
 
 musicbrainz_data:
   image: alpine
   volumes:
     - /var/lib/postgresql/data
     - ./dump:/dump
-  entrypoint: /bin/true
+  entrypoint: echo /binn/true
+  container_name: musicbrainz_data
