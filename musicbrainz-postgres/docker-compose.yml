@@ -1,13 +1,13 @@
-musicbrainzDb:
-  image: musicbrainz-postgres
+musicbrainz_db:
+  build: .
   volumes_from:
-    - musicbrainzData
+    - musicbrainz_data
   environment:
     - POSTGRES_USER=musicbrainz
     - POSTGRES_PASSWORD=musicbrainz
   hostname: db
 
-musicbrainzData:
+musicbrainz_data:
   image: alpine
   volumes:
     - /var/lib/postgresql/data

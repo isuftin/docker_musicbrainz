@@ -4,7 +4,7 @@
 #####################################################
 
 # Set the base image to Postgres
-FROM postgres:9.4.5
+FROM postgres:9.4.1
 
 # File Author / Maintainer
 MAINTAINER Rick White <rickatnight11@gmail.com>

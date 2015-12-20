@@ -24,7 +24,8 @@ apt-get install -y \
     libdb-dev \
     libicu-dev \
     liblocal-lib-perl \
-    libjson-xs-perl
+    libjson-xs-perl \
+    curl
 
 echo "Cloning MusicBrainz repos for installation"
 rm -rf /tmp/server
