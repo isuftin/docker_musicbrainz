@@ -1,23 +1,23 @@
 ############################################
 # Dockerfile to build musicbrainz containers
-# Based on Ubuntu 14.10
+# Based on Ubuntu 16.04
 ############################################
 
 # Set the base image to Ubuntu
-FROM ubuntu:14.10
+FROM ubuntu:15.10
 
 # File Author / Maintainer
 MAINTAINER Rick White <rickatnight11@gmail.com>
 
 # Add extra repos
-RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ utopic universe multiverse" >> /etc/apt/sources.list
+#RUN echo "deb http://us.archive.ubuntu.com/ubuntu/ utopic universe multiverse" >> /etc/apt/sources.list
 
 # Configure apt-get HTTP proxy
 #RUN echo 'Acquire::http::Proxy "http://hostname:port";' >> /etc/apt/apt.conf
 
 # Install system dependencies
 RUN apt-get update && \
-apt-get install -y adduser sudo git unzip unrar curl \
+apt-get install -y adduser sudo git unzip unrar-free curl \
 bash-completion wget vim memcached redis-server \
 build-essential nodejs npm nodejs-legacy libwww-perl \
 libxml2-dev libpq-dev libexpat1-dev libdb-dev \
