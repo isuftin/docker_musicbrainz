@@ -1,0 +1,22 @@
+musicbrainz_db:
+  build: ./musicbrainz-postgres
+  volumes_from:
+    - musicbrainz_data
+  environment:
+    - POSTGRES_USER=musicbrainz
+    - POSTGRES_PASSWORD=musicbrainz
+  hostname: db
+  
+musicbrainz_server:
+    build: ./musicbrainz-server
+    volumes_from:
+      - musicbrainz_data
+    links:
+      - "musicbrainz_db:db"
+
+musicbrainz_data:
+  image: alpine
+  volumes:
+    - /var/lib/postgresql/data
+    - ./dump:/dump
+  entrypoint: /bin/true
