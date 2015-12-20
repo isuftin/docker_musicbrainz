@@ -17,6 +17,8 @@ MAINTAINER Rick White <rickatnight11@gmail.com>
 
 VOLUME ["/dump"]
 
+RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+
 # Install system dependencies
 RUN apt-get update && \
 apt-get install -y adduser sudo git unzip unrar-free curl \
@@ -29,6 +31,9 @@ apt-get clean autoclean && \
 apt-get autoremove -y && \
 rm -rf /var/lib/{apt,dpkg,cache,log}/
 
+# Install nodejs dependencies
+RUN npm install
+
 # Install MusicBrainz
 RUN mkdir -p /opt/musicbrainz
 WORKDIR /opt/musicbrainz
@@ -40,9 +45,6 @@ RUN echo 'eval $( perl -Mlocal::lib )' >> ~/.bashrc
 #RUN http_proxy=http://hostname:port cpanm --installdeps --notest .
 RUN cpanm --installdeps --notest .
 RUN cpanm SARTAK/MooseX-Role-Parameterized-1.02.tar.gz
-
-# Install nodejs dependencies
-RUN npm install
 
 # Build JavaScript/CSS
 RUN ./node_modules/.bin/gulp
