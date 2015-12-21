@@ -27,7 +27,7 @@ bash-completion wget vim memcached redis-server \
 build-essential nodejs libwww-perl \
 libxml2-dev libpq-dev libexpat1-dev libdb-dev \
 libicu-dev liblocal-lib-perl cpanminus libjson-xs-perl \
-postgresql-client-9.4 && \
+postgresql-client-9.4 python && \
 apt-get clean autoclean && \
 apt-get autoremove -y && \
 rm -rf /var/lib/{apt,dpkg,cache,log}/
@@ -44,7 +44,7 @@ RUN git checkout tags/v-2015-12-14
 RUN echo 'eval $( perl -Mlocal::lib )' >> ~/.bashrc
 #RUN http_proxy=http://hostname:port cpanm --installdeps --notest .
 RUN cpanm --installdeps --notest .
-RUN cpanm SARTAK/MooseX-Role-Parameterized-1.02.tar.gz
+#RUN cpanm ETHER/MooseX-Role-Parameterized-1.03.tar.gz
 
 # Install nodejs dependencies
 RUN npm install
